@@ -1,0 +1,19 @@
+{
+    "name": "test/website",
+    "description": "A website that test Facade pattern",
+    "scripts": {
+      "serve": "php -S 127.0.0.1:8000 -t public"
+    },
+    "autoload": {
+      "psr-4": {
+        "App\\": "app",
+        "Framework\\": "framework"
+      }
+    },
+    "config": {
+      "process-timeout": 0
+    },
+    "require": {
+        "symfony/console": "^7.1"
+    }
+}
