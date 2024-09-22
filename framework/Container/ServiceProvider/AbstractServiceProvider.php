@@ -62,7 +62,7 @@ abstract class AbstractServiceProvider
                 $factory->register( $key, $value );
             }
 
-            $config = $application->resolve( 'config' );
+            $config = config( $name );
 
             // Assumiamo che $config sia un array con chiave 'default'
             if ( ! is_array( $config ) || ! isset( $config[ 'default' ] ) || ! isset( $config[ $config ['default' ] ] ) ) {

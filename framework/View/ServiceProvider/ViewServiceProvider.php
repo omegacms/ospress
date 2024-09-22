@@ -105,7 +105,7 @@ class ViewServiceProvider
      */
     private function bindEngine( Application $application, ViewManager $viewManager ) : void
     {
-        $application->alias( 'view.engine.basic',   fn() => new BasicEngine()    );
+        $application->alias( 'view.engine.basica',   fn() => new BasicEngine()    );
 
         $viewManager->addEngine( 'basic.php', $application->resolve( 'view.engine.basic'  ) );
     }

@@ -1,0 +1,55 @@
+[22-Sep-2024 17:43:34 Europe/Rome] PHP Fatal error:  Uncaught Error: Class "ViewServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:203
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(158): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Support/Traits/SingletonTrait.php(66): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/bootstrap/app.php(7): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/public/index.php(36): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 203
+[22-Sep-2024 17:46:38 Europe/Rome] PHP Fatal error:  Uncaught Error: Class "ViewServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:203
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(158): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Support/Traits/SingletonTrait.php(66): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/bootstrap/app.php(7): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/public/index.php(36): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 203
+[22-Sep-2024 17:46:39 Europe/Rome] PHP Fatal error:  Uncaught Error: Class "ViewServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:203
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(158): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Support/Traits/SingletonTrait.php(66): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/bootstrap/app.php(7): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/public/index.php(36): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 203
+[22-Sep-2024 17:46:40 Europe/Rome] PHP Fatal error:  Uncaught Error: Class "ViewServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:203
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(158): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Support/Traits/SingletonTrait.php(66): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/bootstrap/app.php(7): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/public/index.php(36): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 203
+[22-Sep-2024 17:48:28 Europe/Rome] PHP Warning:  Undefined array key "APP_ENV" in /home/morpheus/www/ospress/framework/Exceptions/ExceptionHandler.php on line 57
+[22-Sep-2024 17:48:28 Europe/Rome] PHP Stack trace:
+[22-Sep-2024 17:48:28 Europe/Rome] PHP   1. {main}() /home/morpheus/www/ospress/public/index.php:0
+[22-Sep-2024 17:48:28 Europe/Rome] PHP   2. Framework\Application\Application->bootstrap() /home/morpheus/www/ospress/public/index.php:37
+[22-Sep-2024 17:48:28 Europe/Rome] PHP   3. Framework\Application\Application->dispatch($basePath = '/home/morpheus/www/ospress') /home/morpheus/www/ospress/framework/Application/Application.php:172
+[22-Sep-2024 17:48:28 Europe/Rome] PHP   4. Framework\Routing\Router->dispatch() /home/morpheus/www/ospress/framework/Application/Application.php:230
+[22-Sep-2024 17:48:28 Europe/Rome] PHP   5. Framework\Exceptions\ExceptionHandler->showThrowable($throwable = class Framework\Container\Exceptions\DependencyResolutionException { protected $message = 'view.engine.basicis not bound.'; private string ${Exception}string = ''; protected $code = 0; protected string $file = '/home/morpheus/www/ospress/framework/Container/Container.php'; protected int $line = 93; private array ${Exception}trace = [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...], 5 => [...], 6 => [...], 7 => [...], 8 => [...], 9 => [...], 10 => [...]]; private ?Throwable ${Exception}previous = NULL }) /home/morpheus/www/ospress/framework/Routing/Router.php:94
+[22-Sep-2024 17:54:22 Europe/Rome] PHP Warning:  Undefined array key "APP_ENV" in /home/morpheus/www/ospress/framework/Exceptions/ExceptionHandler.php on line 57
+[22-Sep-2024 17:54:22 Europe/Rome] PHP Stack trace:
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   1. {main}() /home/morpheus/www/ospress/public/index.php:0
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   2. Framework\Application\Application->bootstrap() /home/morpheus/www/ospress/public/index.php:37
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   3. Framework\Application\Application->dispatch($basePath = '/home/morpheus/www/ospress') /home/morpheus/www/ospress/framework/Application/Application.php:172
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   4. Framework\Routing\Router->dispatch() /home/morpheus/www/ospress/framework/Application/Application.php:230
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   5. App\Exceptions\Handler->showThrowable($throwable = class Framework\Container\Exceptions\DependencyResolutionException { protected $message = 'view.engine.basicis not bound.'; private string ${Exception}string = ''; protected $code = 0; protected string $file = '/home/morpheus/www/ospress/framework/Container/Container.php'; protected int $line = 93; private array ${Exception}trace = [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...], 5 => [...], 6 => [...], 7 => [...], 8 => [...], 9 => [...], 10 => [...]]; private ?Throwable ${Exception}previous = NULL }) /home/morpheus/www/ospress/framework/Routing/Router.php:94
+[22-Sep-2024 17:54:22 Europe/Rome] PHP   6. Framework\Exceptions\ExceptionHandler->showThrowable($throwable = class Framework\Container\Exceptions\DependencyResolutionException { protected $message = 'view.engine.basicis not bound.'; private string ${Exception}string = ''; protected $code = 0; protected string $file = '/home/morpheus/www/ospress/framework/Container/Container.php'; protected int $line = 93; private array ${Exception}trace = [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...], 5 => [...], 6 => [...], 7 => [...], 8 => [...], 9 => [...], 10 => [...]]; private ?Throwable ${Exception}previous = NULL }) /home/morpheus/www/ospress/app/Exceptions/Handler.php:49
+[22-Sep-2024 17:56:01 Europe/Rome] PHP Warning:  Undefined array key "APP_ENV" in /home/morpheus/www/ospress/framework/Exceptions/ExceptionHandler.php on line 57
+[22-Sep-2024 17:56:01 Europe/Rome] PHP Stack trace:
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   1. {main}() /home/morpheus/www/ospress/public/index.php:0
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   2. Framework\Application\Application->bootstrap() /home/morpheus/www/ospress/public/index.php:37
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   3. Framework\Application\Application->dispatch($basePath = '/home/morpheus/www/ospress') /home/morpheus/www/ospress/framework/Application/Application.php:172
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   4. Framework\Routing\Router->dispatch() /home/morpheus/www/ospress/framework/Application/Application.php:230
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   5. App\Exceptions\Handler->showThrowable($throwable = class Framework\Container\Exceptions\DependencyResolutionException { protected $message = 'view.engine.basicis not bound.'; private string ${Exception}string = ''; protected $code = 0; protected string $file = '/home/morpheus/www/ospress/framework/Container/Container.php'; protected int $line = 93; private array ${Exception}trace = [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...], 5 => [...], 6 => [...], 7 => [...], 8 => [...], 9 => [...], 10 => [...]]; private ?Throwable ${Exception}previous = NULL }) /home/morpheus/www/ospress/framework/Routing/Router.php:94
+[22-Sep-2024 17:56:01 Europe/Rome] PHP   6. Framework\Exceptions\ExceptionHandler->showThrowable($throwable = class Framework\Container\Exceptions\DependencyResolutionException { protected $message = 'view.engine.basicis not bound.'; private string ${Exception}string = ''; protected $code = 0; protected string $file = '/home/morpheus/www/ospress/framework/Container/Container.php'; protected int $line = 93; private array ${Exception}trace = [0 => [...], 1 => [...], 2 => [...], 3 => [...], 4 => [...], 5 => [...], 6 => [...], 7 => [...], 8 => [...], 9 => [...], 10 => [...]]; private ?Throwable ${Exception}previous = NULL }) /home/morpheus/www/ospress/app/Exceptions/Handler.php:49

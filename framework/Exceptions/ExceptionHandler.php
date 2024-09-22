@@ -21,6 +21,8 @@ namespace Framework\Exceptions;
 /**
  * @use
  */
+use Framework\Session\Storage\NativeStorage;
+use Framework\Validation\Exception\ValidationException;
 use Throwable;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
@@ -54,11 +56,38 @@ class ExceptionHandler
      */
     public function showThrowable( Throwable $throwable ) : mixed
     {
-        if ( isset( $_ENV[ 'APP_ENV' ] ) && $_ENV[ 'APP_ENV' ] === 'dev' ) {
+        if ( $throwable instanceof ValidationException ) {
+            return $this->showValidationException( $throwable );
+        }
+
+        if ( env( 'APP_ENV' ) && env( 'APP_ENV' ) === 'dev' ) {
             $this->showFriendlyThrowable( $throwable );
         }
 
         return null;
+    }
+
+    /**
+    * Show Validation Exception
+    *
+    * This method handles ValidationExceptions by storing error messages in the session
+    * (if available) and redirecting back to the previous page. Useful for displaying
+    * validation errors to the user.
+    *
+    * @param ValidationException $exception Holds an instance of ValidationException.
+    * @return mixed Returns a redirection or performs actions based on the exception.
+    */
+    public function showValidationException( ValidationException $exception ) : mixed
+    {
+        // Assuming the session() function returns an instance of a session management class.
+        $session = session();
+
+        if ( $session = session() ) {
+            /** @var NativeStorage $session */
+            $session->put( $exception->getSessionName(), $exception->getErrors() );
+        }
+
+        return redirect( $_SERVER[ 'HTTP_REFERER' ] );
     }
 
     /**

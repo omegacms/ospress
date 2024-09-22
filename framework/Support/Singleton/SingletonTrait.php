@@ -22,7 +22,7 @@ namespace Framework\Support\Traits;
  * @use
  */
 use function get_called_class;
-use Exception;
+use Framework\Support\Singleton\Exception\SingletonException;
 
 /**
  * Singleton trait.
@@ -76,11 +76,11 @@ trait SingletonTrait
      * Cloning would create a second instance, which violates the Singleton pattern.
      *
      * @return void
-     * @throws Exception If an attempt to clone the singleton is made.
+     * @throws SingletonException If an attempt to clone the singleton is made.
      */
     public function __clone() : void
     {
-        throw new Exception(
+        throw new SingletonException(
             'You can not clone a singleton.'
         );
     }
@@ -92,11 +92,11 @@ trait SingletonTrait
      * Deserialization would create a second instance, which violates the Singleton pattern.
      *
      * @return void
-     * @throws Exception If an attempt at deserialization is made.
+     * @throws SingletonException If an attempt at deserialization is made.
      */
     public function __wakeup() : void
     {
-        throw new Exception(
+        throw new SingletonException(
             'You can not deserialize a singleton.'
         );
     }
@@ -108,11 +108,11 @@ trait SingletonTrait
      * Serialization would create a second instance, which violates the Singleton pattern.
      *
      * @return array Return the names of private properties in parent classes.
-     * @throws Exception If an attempt at serialization is made.
+     * @throws SingletonException If an attempt at serialization is made.
      */
     public function __sleep() : array
     {
-        throw new Exception(
+        throw new SingletonException(
             'You can not serialize a singleton.'
         );
     }
