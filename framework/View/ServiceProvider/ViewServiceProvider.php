@@ -23,10 +23,7 @@ namespace Framework\View\ServiceProvider;
  */
 use function htmlspecialchars;
 use Framework\Application\Application;
-use Framework\View\Engine\AdvancedEngine;
 use Framework\View\Engine\BasicEngine;
-use Framework\View\Engine\LiteralEngine;
-use Framework\View\Engine\PhpEngine;
 use Framework\View\ViewManager;
 
 /**
@@ -80,7 +77,6 @@ class ViewServiceProvider
     private function bindPaths( Application $application, ViewManager $viewManager ) : void
     {
         $viewManager->addPath( $application->resolve( 'paths.base' ) . '/resources/views'  );
-        $viewManager->addPath( $application->resolve( 'paths.base' ) . '/resources/images' );
     }
 
     /**
@@ -110,13 +106,7 @@ class ViewServiceProvider
     private function bindEngine( Application $application, ViewManager $viewManager ) : void
     {
         $application->alias( 'view.engine.basic',   fn() => new BasicEngine()    );
-        $application->alias( 'view.engine.nexus',   fn() => new AdvancedEngine() );
-        $application->alias( 'view.engine.php',     fn() => new PhpEngine()      );
-        $application->alias( 'view.engine.literal', fn() => new LiteralEngine()  );
 
         $viewManager->addEngine( 'basic.php', $application->resolve( 'view.engine.basic'  ) );
-        $viewManager->addEngine( 'nexus.php', $application->resolve( 'view.engine.nexus'   ) );
-        $viewManager->addEngine( 'php',       $application->resolve( 'view.engine.php'     ) );
-        $viewManager->addEngine( 'svg',       $application->resolve( 'view.engine.literal' ) );
     }
 }

@@ -24,7 +24,6 @@ namespace Framework\Config;
 use function array_shift;
 use function explode;
 use function file_exists;
-use Framework\Application\Application;
 
 /**
  * Config class.
@@ -62,13 +61,13 @@ class Config
      * @param  Application $application Holds the application object.
      * @return mixed Return the value of the configuration parameter, or the default value if not found.
      */
-    public function get( string $key, mixed $default = null, Application $application ) : mixed
+    public function get( string $key, mixed $default = null ) : mixed
     {
         $segments = explode( '.', $key );
         $file     = array_shift( $segments );
 
         if (  ! isset( $this->loaded[ $file ] ) ) {
-            $this->loaded[ $file ] = $this->loadConfigFile( $application->getConfigPath( $file . '.php' ) );
+            $this->loaded[ $file ] = $this->loadConfigFile( get_config_path( $file . '.php' ) );
         }
 
         if ( $value = $this->withDots( $this->loaded[ $file ], $segments ) ) {

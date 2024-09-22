@@ -25,6 +25,6 @@ use Framework\Routing\Router;
 return function( Router $router ) {
     $router->get(
         '/',
-        [ ShowHomePageController::class, 'handle' ],
-    )->name( 'show-home-page' );
+        [ new ShowHomePageController(), 'handle' ],
+    );
 };
