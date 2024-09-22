@@ -1,0 +1,5 @@
+{
+    "require": {
+        "inhere/console": "^4.1.6"
+    }
+}
