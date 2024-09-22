@@ -16,7 +16,7 @@ declare( strict_types = 1 );
 /**
  * @namespace
  */
-namespace Framework\Support\Traits;
+namespace Framework\Support\Singleton;
 
 /**
  * @use

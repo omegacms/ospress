@@ -21,12 +21,11 @@ namespace Framework\View\Engine;
 /**
  * @use
  */
-use function file_get_contents;
-use function str_replace;
+use function array_merge;
 use Framework\View\View;
 
 /**
- * Basic engine class.
+ * Php engine class.
  *
  * @category    Omega
  * @package     Omega\View
@@ -37,7 +36,7 @@ use Framework\View\View;
  * @license     https://www.gnu.org/licenses/gpl-3.0-standalone.html     GPL V3.0+
  * @version     1.0.0
  */
-class BasicEngine extends AbstractEngine
+class PhpEngine extends AbstractEngine
 {
     /**
      * @inheritdoc
@@ -49,12 +48,20 @@ class BasicEngine extends AbstractEngine
      */
     public function render( View $view ) : string
     {
-        $contents = file_get_contents( $view->path );
+        extract( $view->data );
 
-        foreach ( $view->data as $key => $value ) {
-            $contents = str_replace(
-                '{' . $key . '}', $value, $contents
-            );
+        ob_start();
+        include( $view->path );
+        $contents = ob_get_contents();
+        ob_end_clean();
+
+        if ( $layout = $this->layouts[ $view->path ] ?? null ) {
+            $contentsWithLayout = view( $layout, array_merge(
+                $view->data,
+                [ 'contents' => $contents ],
+            ) );
+
+            return $contentsWithLayout;
         }
 
         return $contents;

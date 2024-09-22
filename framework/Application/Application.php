@@ -30,7 +30,7 @@ use Framework\Environment\EnvironmentDetector;
 use Framework\Http\Response;
 use Framework\Routing\Router;
 use Framework\Support\Str;
-use Framework\Support\Traits\SingletonTrait;
+use Framework\Support\Singleton\SingletonTrait;
 
 /**
  * Base application class.
