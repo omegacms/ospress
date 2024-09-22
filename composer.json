@@ -2,7 +2,8 @@
     "name": "test/website",
     "description": "A website that test Facade pattern",
     "scripts": {
-      "serve": "php -S 127.0.0.1:8000 -t public"
+      "serve": "php -S 127.0.0.1:8000 -t public",
+	  "phpstan": "vendor/bin/phpstan analyse -vvv -l 9"
     },
     "autoload": {
       "psr-4": {
@@ -19,5 +20,8 @@
     "require": {
         "symfony/console": "^7.1",
         "filp/whoops": "^2.15"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.12"
     }
 }

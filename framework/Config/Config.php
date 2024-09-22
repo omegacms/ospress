@@ -58,7 +58,6 @@ class Config
      *
      * @param  string      $key         Holds the config key, which may include dots for nested values.
      * @param  mixed       $default     Holds the default value to return if the key is not found.
-     * @param  Application $application Holds the application object.
      * @return mixed Return the value of the configuration parameter, or the default value if not found.
      */
     public function get( string $key, mixed $default = null ) : mixed
