@@ -1,5 +1,0 @@
-vendor/
-composer.lock
-.env
-report.txt
-php_errors.log
