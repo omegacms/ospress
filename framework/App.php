@@ -2,8 +2,9 @@
 
 namespace Framework;
 
+use Exception;
 use Dotenv\Dotenv;
-use Framework\Routing\Router;
+use Framework\Support\Facades\Router;
 use Framework\Http\Response;
 use Framework\Support\Facades\AliasLoader;
 
@@ -20,28 +21,20 @@ class App extends Container
         return static::$instance;
     }
 
-    private function __construct() {}
-    private function __clone() {}
-
-    public function prepare(): static
+    private function __construct() 
     {
-        $basePath = $this->resolve('paths.base');
+        $this->bind( 'paths.base', fn() => dirname( __DIR__ ) );
 
-        $this->configure($basePath);
-        $this->bindProviders($basePath);
+        $basePath = $this->resolve( 'paths.base' );
+
+        $this->configure( $basePath );
+        $this->bindProviders( $basePath );
         $this->registerFacades();
-
-        return $this;
     }
 
-    public function run(): Response
+    private function configure( $basePath ) : void
     {
-        return $this->dispatch($this->resolve('paths.base'));
-    }
-
-    private function configure(string $basePath)
-    {
-        $dotenv = Dotenv::createImmutable($basePath);
+        $dotenv = Dotenv::createImmutable( $basePath );
         $dotenv->load();
     }
 
@@ -67,23 +60,44 @@ class App extends Container
         AliasLoader::getInstance($aliases)->load();
     }
 
-    private function dispatch(string $basePath): Response
+    public function bootstrap() : Response
     {
-        if (!$this->has(Router::class)) {
-            $router = new Router();
+        return $this->dispatch( $this->resolve( 'paths.base' ) );
+    }
 
-            $routes = require "{$basePath}/app/routes.php";
-            $routes($router);
+    private function dispatch( string $basePath ): Response
+    {
+        $routes = require "{$basePath}/app/routes.php";
+        $routes( Router::class );
+     
+        // $response = $this->resolve(Router::class)->dispatch();
+        $response = Router::dispatch();
 
-            $this->bind(Router::class, fn() => $router);
-        }
-
-        $response = $this->resolve(Router::class)->dispatch();
-
-        if (!$response instanceof Response) {
-            $response = $this->resolve('response')->content($response);
+        if ( ! $response instanceof Response ) {
+            $response = $this->resolve( 'response' )->content( $response );
         }
 
         return $response;
+    }
+
+    public function __clone() : void
+    {
+        throw new Exception(
+            'You can not clone a singleton.'
+        );
+    }
+
+    public function __wakeup() : void
+    {
+        throw new Exception(
+            'You can not deserialize a singleton.'
+        );
+    }
+
+    public function __sleep() : array
+    {
+        throw new Exception(
+            'You can not serialize a singleton.'
+        );
     }
 }

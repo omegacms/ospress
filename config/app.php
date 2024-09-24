@@ -8,6 +8,7 @@ use Framework\Provider\FilesystemProvider;
 use Framework\Provider\LoggingProvider;
 use Framework\Provider\QueueProvider;
 use Framework\Provider\ResponseProvider;
+use Framework\Provider\RouterProvider;
 use Framework\Provider\SessionProvider;
 use Framework\Provider\ValidationProvider;
 use Framework\Provider\ViewProvider;
@@ -19,6 +20,7 @@ use Framework\Support\Facades\Filesystem;
 use Framework\Support\Facades\Logging;
 use Framework\Support\Facades\Queue;
 use Framework\Support\Facades\Response;
+use Framework\Support\Facades\Router;
 use Framework\Support\Facades\Session;
 use Framework\Support\Facades\Validation;
 use Framework\Support\Facades\View;
@@ -33,6 +35,7 @@ return [
         LoggingProvider::class,
         QueueProvider::class,
         ResponseProvider::class,
+        RouterProvider::class,
         SessionProvider::class,
         ValidationProvider::class,
         ViewProvider::class,
@@ -46,6 +49,7 @@ return [
         'Logging'    => Logging::class,
         'Queue'      => Queue::class,
         'Response'   => Response::class,
+        'Router'     => Router::class,
         'Session'    => Session::class,
         'Validation' => Validation::class,
         'View'       => View::class

@@ -7,19 +7,22 @@ use App\Http\Controllers\Users\LogInUserController;
 use App\Http\Controllers\Users\LogOutUserController;
 use App\Http\Controllers\Users\RegisterUserController;
 use App\Http\Controllers\Users\ShowRegisterFormController;
-use Framework\Routing\Router;
+//use Framework\Routing\Router;
+use FRamework\Support\Facades\Router;
 
-return function(Router $router) {
-    $router->errorHandler(
+return function(/**Router $router*/) {
+    /**$router->errorHandler(
         404, fn() => 'whoops!'
-    );
+    );*/
 
-    $router->add(
+    //$router->add(
+    //    'GET', '/',
+    Router::add(
         'GET', '/',
         [ShowHomePageController::class, 'handle'],
     )->name('show-home-page');
 
-    $router->add(
+    /**$router->add(
         'GET', '/products/view/{product}',
         [ShowProductController::class, 'handle'],
     )->name('view-product');
@@ -47,5 +50,5 @@ return function(Router $router) {
     $router->add(
         'GET', '/log-out',
         [LogOutUserController::class, 'handle'],
-    )->name('log-out-user');
+    )->name('log-out-user');*/
 };
