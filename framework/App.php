@@ -47,7 +47,6 @@ class App extends Container
             $instance = new $provider;
 
             if (method_exists($instance, 'bind')) {
-                print_r( $instance );
                 $instance->bind($this);
             }
         }
@@ -70,8 +69,7 @@ class App extends Container
     {
         $routes = require "{$basePath}/app/routes.php";
         $routes( Router::class );
-     
-        // $response = $this->resolve(Router::class)->dispatch();
+
         $response = Router::dispatch();
 
         if ( ! $response instanceof Response ) {

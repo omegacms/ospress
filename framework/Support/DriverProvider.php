@@ -8,7 +8,6 @@ abstract class DriverProvider
 {
     public function bind(App $app): void
     {
-        echo "<pre>"; print_r( $app ); echo "</pre>";
         $name    = $this->name();
         $factory = $this->factory();
         $drivers = $this->drivers();
