@@ -7,48 +7,45 @@ use App\Http\Controllers\Users\LogInUserController;
 use App\Http\Controllers\Users\LogOutUserController;
 use App\Http\Controllers\Users\RegisterUserController;
 use App\Http\Controllers\Users\ShowRegisterFormController;
-//use Framework\Routing\Router;
 use FRamework\Support\Facades\Router;
 
-return function(/**Router $router*/) {
-    /**$router->errorHandler(
+return function() {
+    Router::errorHandler(
         404, fn() => 'whoops!'
-    );*/
+    );
 
-    //$router->add(
-    //    'GET', '/',
     Router::add(
         'GET', '/',
         [ShowHomePageController::class, 'handle'],
     )->name('show-home-page');
 
-    /**$router->add(
+    Router::add(
         'GET', '/products/view/{product}',
         [ShowProductController::class, 'handle'],
     )->name('view-product');
 
-    $router->add(
+    Router::add(
         'POST', '/products/order/{product}',
         [OrderProductController::class, 'handle'],
     )->name('order-product');
 
-    $router->add(
+    Router::add(
         'GET', '/register',
         [ShowRegisterFormController::class, 'handle'],
     )->name('show-register-form');
 
-    $router->add(
+    Router::add(
         'POST', '/register',
         [RegisterUserController::class, 'handle'],
     )->name('register-user');
 
-    $router->add(
+    Router::add(
         'POST', '/log-in',
         [LogInUserController::class, 'handle'],
     )->name('log-in-user');
 
-    $router->add(
+    Router::add(
         'GET', '/log-out',
         [LogOutUserController::class, 'handle'],
-    )->name('log-out-user');*/
+    )->name('log-out-user');
 };

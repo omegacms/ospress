@@ -47,6 +47,7 @@ class App extends Container
             $instance = new $provider;
 
             if (method_exists($instance, 'bind')) {
+                print_r( $instance );
                 $instance->bind($this);
             }
         }
