@@ -1,6 +1,6 @@
 <?php
 
-use Framework\App;
+use Framework\Application\Application;
 use Framework\Validation;
 use Framework\View;
 
@@ -8,10 +8,10 @@ if (!function_exists('app')) {
     function app(string $alias = null): mixed
     {
         if (is_null($alias)) {
-            return App::getInstance();
+            return Application::getInstance();
         }
 
-        return App::getInstance()->resolve($alias);
+        return Application::getInstance()->resolve($alias);
     }
 }
 

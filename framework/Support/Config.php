@@ -2,7 +2,7 @@
 
 namespace Framework\Support;
 
-use Framework\App;
+use Framework\Application\Application;
 
 class Config
 {
@@ -14,7 +14,7 @@ class Config
         $file = array_shift($segments);
 
         if (!isset($this->loaded[$file])) {
-            $base = App::getInstance()->resolve('paths.base');
+            $base = Application::getInstance()->resolve('paths.base');
             $separator = DIRECTORY_SEPARATOR;
 
             $this->loaded[$file] = (array) require "{$base}{$separator}config{$separator}{$file}.php";

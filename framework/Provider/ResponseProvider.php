@@ -2,7 +2,7 @@
 
 namespace Framework\Provider;
 
-use Framework\Application;
+use Framework\Application\Application;
 use Framework\Http\Response;
 
 class ResponseProvider

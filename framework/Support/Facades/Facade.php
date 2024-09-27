@@ -2,13 +2,13 @@
 
 namespace Framework\Support\Facades;
 
-use Framework\App;
+use Framework\Application\Application;
 
 abstract class Facade
 {
     protected static function resolveFacadeInstance(): mixed
     {
-        return App::getInstance()->resolve(static::getFacadeAccessor());
+        return Application::getInstance()->resolve(static::getFacadeAccessor());
     }
 
     public static function __callStatic($method, $arguments)

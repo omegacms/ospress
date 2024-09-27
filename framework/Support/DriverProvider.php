@@ -2,11 +2,11 @@
 
 namespace Framework\Support;
 
-use Framework\App;
+use Framework\Application\Application;
 
 abstract class DriverProvider
 {
-    public function bind(App $app): void
+    public function bind(Application $app): void
     {
         $name    = $this->name();
         $factory = $this->factory();

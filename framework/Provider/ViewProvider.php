@@ -2,7 +2,7 @@
 
 namespace Framework\Provider;
 
-use Framework\App;
+use Framework\Application\Application;
 use Framework\View\Manager;
 use Framework\View\Engine\BasicEngine;
 use Framework\View\Engine\AdvancedEngine;
@@ -11,7 +11,7 @@ use Framework\View\Engine\LiteralEngine;
 
 class ViewProvider
 {
-    public function bind(App $app): void
+    public function bind(Application $app): void
     {
         $app->bind('view', function($app) {
             $manager = new Manager();
@@ -24,19 +24,19 @@ class ViewProvider
         });
     }
 
-    private function bindPaths(App $app, Manager $manager): void
+    private function bindPaths(Application $app, Manager $manager): void
     {
         $manager->addPath($app->resolve('paths.base') . '/resources/views');
         $manager->addPath($app->resolve('paths.base') . '/resources/images');
     }
 
-    private function bindMacros(App $app, Manager $manager): void
+    private function bindMacros(Application $app, Manager $manager): void
     {
         $manager->addMacro('escape', fn($value) => htmlspecialchars($value, ENT_QUOTES));
         $manager->addMacro('includes', fn(...$params) => print view(...$params));
     }
 
-    private function bindEngines(App $app, Manager $manager): void
+    private function bindEngines(Application $app, Manager $manager): void
     {
         $app->bind('view.engine.basic', fn() => new BasicEngine());
         $app->bind('view.engine.advanced', fn() => new AdvancedEngine());

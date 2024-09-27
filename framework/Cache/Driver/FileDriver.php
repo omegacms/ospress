@@ -2,7 +2,7 @@
 
 namespace Framework\Cache\Driver;
 
-use Framework\App;
+use Framework\Application\Application;
 
 class FileDriver implements Driver
 {
@@ -32,7 +32,7 @@ class FileDriver implements Driver
 
     private function base(): string
     {
-        $base = App::getInstance()->resolve('paths.base');
+        $base = Application::getInstance()->resolve('paths.base');
         $separator = DIRECTORY_SEPARATOR;
 
         return "{$base}{$separator}storage{$separator}framework{$separator}cache";

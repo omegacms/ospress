@@ -2,7 +2,7 @@
 
 namespace Framework\Provider;
 
-use Framework\Application;
+use Framework\Application\Application;
 use Framework\Validation\Manager;
 use Framework\Validation\Rule\RequiredRule;
 use Framework\Validation\Rule\EmailRule;
