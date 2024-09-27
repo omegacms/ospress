@@ -1,14 +1,15 @@
 <?php
 
-namespace Framework;
+namespace Framework\Application;
 
 use Exception;
 use Dotenv\Dotenv;
-use Framework\Support\Facades\Router;
+use Framework\Container\Container;
 use Framework\Http\Response;
 use Framework\Support\Facades\AliasLoader;
+use Framework\Support\Facades\Router;
 
-class App extends Container
+class Application extends Container
 {
     private static $instance;
 
@@ -23,7 +24,7 @@ class App extends Container
 
     private function __construct() 
     {
-        $this->bind( 'paths.base', fn() => dirname( __DIR__ ) );
+        $this->bind( 'paths.base', fn() => dirname( dirname ( __DIR__ ) ) );
 
         $basePath = $this->resolve( 'paths.base' );
 

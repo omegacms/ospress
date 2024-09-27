@@ -2,12 +2,12 @@
 
 namespace Framework\Provider;
 
-use Framework\App;
+use Framework\Application;
 use Framework\Http\Response;
 
 class ResponseProvider
 {
-    public function bind(App $app): void
+    public function bind(Application $app): void
     {
         $app->bind('response', function($app) {
             return new Response();

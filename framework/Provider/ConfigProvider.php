@@ -2,12 +2,12 @@
 
 namespace Framework\Provider;
 
-use Framework\App;
+use Framework\Application;
 use Framework\Support\Config;
 
 class ConfigProvider
 {
-    public function bind(App $app): void
+    public function bind(Application $app): void
     {
         $app->bind('config', function($app) {
             return new Config();

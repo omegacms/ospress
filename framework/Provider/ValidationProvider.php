@@ -2,7 +2,7 @@
 
 namespace Framework\Provider;
 
-use Framework\App;
+use Framework\Application;
 use Framework\Validation\Manager;
 use Framework\Validation\Rule\RequiredRule;
 use Framework\Validation\Rule\EmailRule;
@@ -10,7 +10,7 @@ use Framework\Validation\Rule\MinRule;
 
 class ValidationProvider
 {
-    public function bind(App $app): void
+    public function bind(Application $app): void
     {
         $app->bind('validator', function($app) {
             $manager = new Manager();
@@ -21,7 +21,7 @@ class ValidationProvider
         });
     }
 
-    private function bindRules(App $app, Manager $manager): void
+    private function bindRules(Application $app, Manager $manager): void
     {
         $app->bind('validation.rule.required', fn() => new RequiredRule());
         $app->bind('validation.rule.email', fn() => new EmailRule());
