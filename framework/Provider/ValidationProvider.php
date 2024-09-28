@@ -10,25 +10,25 @@ use Framework\Validation\Rule\MinRule;
 
 class ValidationProvider
 {
-    public function bind(Application $app): void
+    public function bind(Application $application): void
     {
-        $app->bind('validator', function($app) {
+        $application->bind('validator', function($application) {
             $manager = new Manager();
     
-            $this->bindRules($app, $manager);
+            $this->bindRules($application, $manager);
     
             return $manager;
         });
     }
 
-    private function bindRules(Application $app, Manager $manager): void
+    private function bindRules(Application $application, Manager $manager): void
     {
-        $app->bind('validation.rule.required', fn() => new RequiredRule());
-        $app->bind('validation.rule.email', fn() => new EmailRule());
-        $app->bind('validation.rule.min', fn() => new MinRule());
+        $application->bind('validation.rule.required', fn() => new RequiredRule());
+        $application->bind('validation.rule.email', fn() => new EmailRule());
+        $application->bind('validation.rule.min', fn() => new MinRule());
 
-        $manager->addRule('required', $app->resolve('validation.rule.required'));
-        $manager->addRule('email', $app->resolve('validation.rule.email'));
-        $manager->addRule('min', $app->resolve('validation.rule.min'));
+        $manager->addRule('required', $application->resolve('validation.rule.required'));
+        $manager->addRule('email', $application->resolve('validation.rule.email'));
+        $manager->addRule('min', $application->resolve('validation.rule.min'));
     }
 }

@@ -2,5 +2,5 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$app = \Framework\Application\Application::getInstance();
-$app->bootstrap()->send();
+$application = \Framework\Application\Application::getInstance();
+$application->bootstrap()->send();

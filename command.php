@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-$app = \Framework\Application\Application::getInstance();
+$application = \Framework\Application\Application::getInstance();
 //$app->bind('paths.base', fn() => __DIR__);
 //$app->prepare();
 

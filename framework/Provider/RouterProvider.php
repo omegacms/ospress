@@ -7,9 +7,9 @@ use Framework\Routing\Router;
 
 class RouterProvider
 {
-    public function bind( Application $app ) : void
+    public function bind( Application $application ) : void
     {   
-        $app->bind( 'router', function ( $app ) {
+        $application->bind( 'router', function ( $application ) {
             return new Router();
         });
     }   

@@ -7,9 +7,9 @@ use Framework\Http\Response;
 
 class ResponseProvider
 {
-    public function bind(Application $app): void
+    public function bind(Application $application): void
     {
-        $app->bind('response', function($app) {
+        $application->bind('response', function($application) {
             return new Response();
         });
     }

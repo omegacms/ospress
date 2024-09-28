@@ -7,9 +7,9 @@ use Framework\Support\Config;
 
 class ConfigProvider
 {
-    public function bind(Application $app): void
+    public function bind(Application $application): void
     {
-        $app->bind('config', function($app) {
+        $application->bind('config', function($application) {
             return new Config();
         });
     }

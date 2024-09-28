@@ -6,13 +6,13 @@ use Framework\Application\Application;
 
 abstract class DriverProvider
 {
-    public function bind(Application $app): void
+    public function bind(Application $application): void
     {
         $name    = $this->name();
         $factory = $this->factory();
         $drivers = $this->drivers();
 
-        $app->bind($name, function ($app) use ($name, $factory, $drivers) {
+        $application->bind($name, function ($application) use ($name, $factory, $drivers) {
             foreach ($drivers as $key => $value) {
                 $factory->addDriver($key, $value);
             }
