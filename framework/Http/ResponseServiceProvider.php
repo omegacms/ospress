@@ -1,11 +1,10 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Http;
 
 use Framework\Application\Application;
-use Framework\Http\Response;
 
-class ResponseProvider
+class ResponseServiceProvider
 {
     public function bind(Application $application): void
     {

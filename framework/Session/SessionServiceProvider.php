@@ -1,17 +1,16 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Session;
 
-use Framework\Queue\Factory;
-use Framework\Queue\Driver\DatabaseDriver;
+use Framework\Session\Driver\NativeDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class QueueProvider extends DriverProvider
+class SessionServiceProvider extends DriverProvider
 {
     protected function name(): string
     {
-        return 'queue';
+        return 'session';
     }
 
     protected function factory(): DriverFactory
@@ -22,8 +21,8 @@ class QueueProvider extends DriverProvider
     protected function drivers(): array
     {
         return [
-            'database' => function($config) {
-                return new DatabaseDriver($config);
+            'native' => function($config) {
+                return new NativeDriver($config);
             },
         ];
     }

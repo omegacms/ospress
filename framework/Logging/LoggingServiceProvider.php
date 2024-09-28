@@ -1,17 +1,16 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Logging;
 
-use Framework\Session\Factory;
-use Framework\Session\Driver\NativeDriver;
+use Framework\Logging\Driver\StreamDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class SessionProvider extends DriverProvider
+class LoggingServiceProvider extends DriverProvider
 {
     protected function name(): string
     {
-        return 'session';
+        return 'logging';
     }
 
     protected function factory(): DriverFactory
@@ -22,8 +21,8 @@ class SessionProvider extends DriverProvider
     protected function drivers(): array
     {
         return [
-            'native' => function($config) {
-                return new NativeDriver($config);
+            'stream' => function($config) {
+                return new StreamDriver($config);
             },
         ];
     }

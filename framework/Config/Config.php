@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Support;
+namespace Framework\Config;
 
 use Framework\Application\Application;
 

@@ -1,15 +1,14 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Cache;
 
-use Framework\Cache\Factory;
 use Framework\Cache\Driver\FileDriver;
 use Framework\Cache\Driver\MemcacheDriver;
 use Framework\Cache\Driver\MemoryDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class CacheProvider extends DriverProvider
+class CacheServiceProvider extends DriverProvider
 {
     protected function name(): string
     {

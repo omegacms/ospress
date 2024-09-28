@@ -1,11 +1,10 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Routing;
 
 use Framework\Application\Application;
-use Framework\Routing\Router;
 
-class RouterProvider
+class RouterServiceProvider
 {
     public function bind( Application $application ) : void
     {   

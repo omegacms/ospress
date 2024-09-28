@@ -1,0 +1,16 @@
+[28-Sep-2024 20:22:54 UTC] PHP Fatal error:  Uncaught Error: Class "Framework\validation\ValidationServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:48
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(32): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Application/Application.php(19): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/public/index.php(5): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/server.php(11): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 48
+[28-Sep-2024 20:22:55 UTC] PHP Fatal error:  Uncaught Error: Class "Framework\validation\ValidationServiceProvider" not found in /home/morpheus/www/ospress/framework/Application/Application.php:48
+Stack trace:
+#0 /home/morpheus/www/ospress/framework/Application/Application.php(32): Framework\Application\Application->bindProviders()
+#1 /home/morpheus/www/ospress/framework/Application/Application.php(19): Framework\Application\Application->__construct()
+#2 /home/morpheus/www/ospress/public/index.php(5): Framework\Application\Application::getInstance()
+#3 /home/morpheus/www/ospress/server.php(11): require_once('...')
+#4 {main}
+  thrown in /home/morpheus/www/ospress/framework/Application/Application.php on line 48

@@ -1,17 +1,16 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Queue;
 
-use Framework\Filesystem\Factory;
-use Framework\Filesystem\Driver\LocalDriver;
+use Framework\Queue\Driver\DatabaseDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class FilesystemProvider extends DriverProvider
+class QueueServiceProvider extends DriverProvider
 {
     protected function name(): string
     {
-        return 'filesystem';
+        return 'queue';
     }
 
     protected function factory(): DriverFactory
@@ -22,8 +21,8 @@ class FilesystemProvider extends DriverProvider
     protected function drivers(): array
     {
         return [
-            'local' => function($config) {
-                return new LocalDriver($config);
+            'database' => function($config) {
+                return new DatabaseDriver($config);
             },
         ];
     }

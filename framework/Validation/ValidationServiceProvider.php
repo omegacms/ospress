@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Validation;
 
 use Framework\Application\Application;
 use Framework\Validation\Manager;
@@ -8,7 +8,7 @@ use Framework\Validation\Rule\RequiredRule;
 use Framework\Validation\Rule\EmailRule;
 use Framework\Validation\Rule\MinRule;
 
-class ValidationProvider
+class ValidationServiceProvider
 {
     public function bind(Application $application): void
     {

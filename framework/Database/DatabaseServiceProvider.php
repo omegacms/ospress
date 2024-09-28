@@ -1,14 +1,13 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Database;
 
-use Framework\Database\Factory;
 use Framework\Database\Connection\MysqlConnection;
 use Framework\Database\Connection\SqliteConnection;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class DatabaseProvider extends DriverProvider
+class DatabaseServiceProvider extends DriverProvider
 {
     protected function name(): string
     {

@@ -1,17 +1,16 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Filesystem;
 
-use Framework\Email\Factory;
-use Framework\Email\Driver\PostmarkDriver;
+use Framework\Filesystem\Driver\LocalDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class EmailProvider extends DriverProvider
+class FilesystemServiceProvider extends DriverProvider
 {
     protected function name(): string
     {
-        return 'email';
+        return 'filesystem';
     }
 
     protected function factory(): DriverFactory
@@ -22,8 +21,8 @@ class EmailProvider extends DriverProvider
     protected function drivers(): array
     {
         return [
-            'postmark' => function($config) {
-                return new PostmarkDriver($config);
+            'local' => function($config) {
+                return new LocalDriver($config);
             },
         ];
     }

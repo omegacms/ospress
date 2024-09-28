@@ -1,17 +1,16 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Email;
 
-use Framework\Logging\Factory;
-use Framework\Logging\Driver\StreamDriver;
+use Framework\Email\Driver\PostmarkDriver;
 use Framework\Support\DriverProvider;
 use Framework\Support\DriverFactory;
 
-class LoggingProvider extends DriverProvider
+class EmailServiceProvider extends DriverProvider
 {
     protected function name(): string
     {
-        return 'logging';
+        return 'email';
     }
 
     protected function factory(): DriverFactory
@@ -22,8 +21,8 @@ class LoggingProvider extends DriverProvider
     protected function drivers(): array
     {
         return [
-            'stream' => function($config) {
-                return new StreamDriver($config);
+            'postmark' => function($config) {
+                return new PostmarkDriver($config);
             },
         ];
     }

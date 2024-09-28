@@ -1,11 +1,10 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\Config;
 
 use Framework\Application\Application;
-use Framework\Support\Config;
 
-class ConfigProvider
+class ConfigServiceProvider
 {
     public function bind(Application $application): void
     {

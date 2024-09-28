@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Provider;
+namespace Framework\View;
 
 use Framework\Application\Application;
 use Framework\View\Manager;
@@ -9,7 +9,7 @@ use Framework\View\Engine\AdvancedEngine;
 use Framework\View\Engine\PhpEngine;
 use Framework\View\Engine\LiteralEngine;
 
-class ViewProvider
+class ViewServiceProvider
 {
     public function bind(Application $application): void
     {

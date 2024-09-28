@@ -1,57 +1,32 @@
 <?php
 
-use Framework\Provider\ConfigProvider;
-use Framework\Provider\CacheProvider;
-use Framework\Provider\DatabaseProvider;
-use Framework\Provider\EmailProvider;
-use Framework\Provider\FilesystemProvider;
-use Framework\Provider\LoggingProvider;
-use Framework\Provider\QueueProvider;
-use Framework\Provider\ResponseProvider;
-use Framework\Provider\RouterProvider;
-use Framework\Provider\SessionProvider;
-use Framework\Provider\ValidationProvider;
-use Framework\Provider\ViewProvider;
-use Framework\Support\Facades\Config;
-use Framework\Support\Facades\Cache;
-use Framework\Support\Facades\Database;
-use Framework\Support\Facades\Email;
-use Framework\Support\Facades\Filesystem;
-use Framework\Support\Facades\Logging;
-use Framework\Support\Facades\Queue;
-use Framework\Support\Facades\Response;
-use Framework\Support\Facades\Router;
-use Framework\Support\Facades\Session;
-use Framework\Support\Facades\Validation;
-use Framework\Support\Facades\View;
-
 return [
     'providers' => [
-        ConfigProvider::class,
-        CacheProvider::class,
-        DatabaseProvider::class,
-        EmailProvider::class,
-        FilesystemProvider::class,
-        LoggingProvider::class,
-        QueueProvider::class,
-        ResponseProvider::class,
-        RouterProvider::class,
-        SessionProvider::class,
-        ValidationProvider::class,
-        ViewProvider::class,
+        \Framework\Config\ConfigServiceProvider::class,
+        \Framework\Cache\CacheServiceProvider::class,
+        \Framework\Database\DatabaseServiceProvider::class,
+        \Framework\Email\EmailServiceProvider::class,
+        \Framework\Filesystem\FilesystemServiceProvider::class,
+        \Framework\Logging\LoggingServiceProvider::class,
+        \Framework\Queue\QueueServiceProvider::class,
+        \Framework\Http\ResponseServiceProvider::class,
+        \Framework\Routing\RouterServiceProvider::class,
+        \Framework\Session\SessionServiceProvider::class,
+        \Framework\Validation\ValidationServiceProvider::class,
+        \Framework\View\ViewServiceProvider::class,
     ],
     'facades'   => [
-        'Config'     => Config::class,
-        'Cache'      => Cache::class,
-        'Database'   => Database::class,
-        'Email'      => Email::class,
-        'Filesystem' => Filesystem::class,
-        'Logging'    => Logging::class,
-        'Queue'      => Queue::class,
-        'Response'   => Response::class,
-        'Router'     => Router::class,
-        'Session'    => Session::class,
-        'Validation' => Validation::class,
-        'View'       => View::class
+        'Config'     => \Framework\Support\Facades\Config::class,
+        'Cache'      => \Framework\Support\Facades\Cache::class,
+        'Database'   => \Framework\Support\Facades\Database::class,
+        'Email'      => \Framework\Support\Facades\Email::class,
+        'Filesystem' => \Framework\Support\Facades\Filesystem::class,
+        'Logging'    => \Framework\Support\Facades\Logging::class,
+        'Queue'      => \Framework\Support\Facades\Queue::class,
+        'Response'   => \Framework\Support\Facades\Response::class,
+        'Router'     => \Framework\Support\Facades\Router::class,
+        'Session'    => \Framework\Support\Facades\Session::class,
+        'Validation' => \Framework\Support\Facades\Validation::class,
+        'View'       => \Framework\Support\Facades\View::class
     ],
 ];
