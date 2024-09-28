@@ -14,7 +14,7 @@ class ShowProductController
 
         $product = Product::find((int) $parameters['product']);
 
-        return View::view('products/view', [
+        return View::render('products/view', [
             'product'     => $product,
             'orderAction' => Router::route('order-product', ['product' => $product->id]),
             'csrf'        => csrf(),
