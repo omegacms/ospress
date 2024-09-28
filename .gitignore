@@ -4,3 +4,4 @@ drivers/*
 vendor
 *.cache
 composer.lock
+php_errors.log
