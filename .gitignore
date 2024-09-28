@@ -3,3 +3,4 @@ database/*.sqlite
 drivers/*
 vendor
 *.cache
+composer.lock

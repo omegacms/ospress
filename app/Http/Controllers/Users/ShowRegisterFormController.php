@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Users;
 
-use Framework\Routing\Router;
+use Framework\Support\Facades\Router;
 
 class ShowRegisterFormController
 {
-    public function handle(Router $router)
+    public function handle()
     {
         return view('users/register', [
-            'registerAction' => $router->route('register-user'),
-            'logInAction' => $router->route('log-in-user'),
-            'csrf' => csrf(),
+            'registerAction' => Router::route('register-user'),
+            'logInAction'    => Router::route('log-in-user'),
+            'csrf'           => csrf(),
         ]);
     }
 }

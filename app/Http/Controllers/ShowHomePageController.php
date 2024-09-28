@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use function array_map;
 use App\Models\Product;
 use Framework\Support\Facades\Cache;
 use Framework\Support\Facades\Router;

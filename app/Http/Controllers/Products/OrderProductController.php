@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\Products;
 
-use Framework\Routing\Router;
+use Framework\Support\Facades\Response;
+use Framework\Support\Facades\Router;
+use Framework\Support\Facades\Session;
 
 class OrderProductController
 {
-    public function handle(Router $router)
+    public function handle()
     {
         secure();
 
         // use $data to create a database record...
 
-        $_SESSION['ordered'] = true;
+        Session::put( 'ordered', true );
 
-        return redirect($router->route('show-home-page'));
+        return Response::redirect(Router::route('show-home-page'));
     }
 }

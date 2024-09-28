@@ -3,20 +3,21 @@
 namespace App\Http\Controllers\Products;
 
 use App\Models\Product;
-use Framework\Routing\Router;
+use Framework\Support\Facades\Router;
+use Framework\Support\Facades\View;
 
 class ShowProductController
 {
-    public function handle(Router $router)
+    public function handle()
     {
-        $parameters = $router->current()->parameters();
+        $parameters = Router::current()->parameters();
 
         $product = Product::find((int) $parameters['product']);
 
-        return view('products/view', [
-            'product' => $product,
-            'orderAction' => $router->route('order-product', ['product' => $product->id]),
-            'csrf' => csrf(),
+        return View::view('products/view', [
+            'product'     => $product,
+            'orderAction' => Router::route('order-product', ['product' => $product->id]),
+            'csrf'        => csrf(),
         ]);
     }
 }

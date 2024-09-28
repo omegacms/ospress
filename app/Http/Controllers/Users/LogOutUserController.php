@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Users;
 
-use Framework\Routing\Router;
+use Framework\Support\Facades\Response;
+use Framework\Support\Facades\Router;
+use Framework\Support\Facades\Session;
 
 class LogOutUserController
 {
-    public function handle(Router $router)
+    public function handle()
     {
-        session()->forget('user_id');
+        Session::forget('user_id');
 
-        return redirect($router->route('show-home-page'));
+        return Response::redirect(Router::route('show-home-page'));
     }
 }

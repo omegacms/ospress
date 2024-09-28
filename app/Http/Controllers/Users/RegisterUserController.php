@@ -2,33 +2,38 @@
 
 namespace App\Http\Controllers\Users;
 
+use function password_hash;
 use App\Models\User;
-use Framework\Routing\Router;
+use Framework\Support\Facades\Queue;
+use Framework\Support\Facades\Response;
+use Framework\Support\Facades\Router;
+use Framework\Support\Facades\Session;
+use Framework\Support\Facades\Validation;
 
 class RegisterUserController
 {
-    public function handle(Router $router)
+    public function handle()
     {
         secure();
 
-        $data = validate($_POST, [
-            'name' => ['required'],
-            'email' => ['required', 'email'],
+        $data = Validation::validate($_POST, [
+            'name'     => ['required'],
+            'email'    => ['required', 'email'],
             'password' => ['required', 'min:10'],
         ], 'register_errors');
 
-        $user = new User();
-        $user->name = $data['name'];
-        $user->email = $data['email'];
+        $user           = new User();
+        $user->name     = $data['name'];
+        $user->email    = $data['email'];
         $user->password = password_hash($data['password'], PASSWORD_BCRYPT);
         $user->save();
 
-        session()->put('registered', true);
+        Session::put('registered', true);
 
-        app('queue')->push(function($user) {
+        Queue::push(function($user) {
             // send a mail to the user...
         }, $user);
 
-        return redirect($router->route('show-home-page'));
+        return Response::redirect(Router::route('show-home-page'));
     }
 }
