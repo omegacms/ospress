@@ -18,7 +18,7 @@ abstract class DriverProvider
             }
 
             $config = config($name);
-
+            echo $config;
             return $factory->connect($config[$config['default']]);
         });
     }
