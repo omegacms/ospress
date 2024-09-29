@@ -33,22 +33,15 @@ class MigrateCommand extends Command
             return Command::SUCCESS;
         }
 
-        // $connection = $this->connection();
-        //$connection = app('database');
-        $connection = Database::class;
-
         if ($input->getOption('fresh')) {
             $output->writeln('Dropping existing database tables');
 
             Database::dropTables();
-
-            // $connection = $this->connection();
-            //$connection = app('database');
         }
 
         if (!Database::hasTable('migrations')) {
             $output->writeln('Creating migrations table');
-            $this->createMigrationsTable($connection);
+			$this->createMigrationsTable(Database::class);
         }
 
         foreach ($paths as $path) {
@@ -60,13 +53,13 @@ class MigrateCommand extends Command
             $output->writeln("Migrating: {$class}");
 
             $obj = new $class();
-            $obj->migrate($connection);
+            $obj->migrate(Database::class);
 
             $connection = Database::query()
                 ->from('migrations')
                 ->insert(['name'], ['name' => $class]);
         }
-        
+
         return Command::SUCCESS;
     }
 
