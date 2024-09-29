@@ -1,6 +1,6 @@
 <?php
 
-namespace Framework\Support;
+namespace Framework\Support\Exception;
 
 use Framework\Validation\Exception\ValidationException;
 use Throwable;
@@ -25,7 +25,7 @@ class ExceptionHandler
         if ($session = session()) {
             $session->put($exception->getSessionName(), $exception->getErrors());
         }
-        
+
         return redirect(env('HTTP_REFERER'));
     }
 

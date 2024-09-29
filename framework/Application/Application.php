@@ -22,7 +22,7 @@ class Application extends Container
         return static::$instance;
     }
 
-    private function __construct() 
+    private function __construct()
     {
         $this->bind( 'paths.base', fn() => dirname( dirname ( __DIR__ ) ) );
 
@@ -68,7 +68,7 @@ class Application extends Container
 
     private function dispatch( string $basePath ): Response
     {
-        $routes = require "{$basePath}/app/routes.php";
+        $routes = require "{$basePath}/routes/web.php";
         $routes( Router::class );
 
         $response = Router::dispatch();

@@ -7,7 +7,7 @@ use App\Http\Controllers\Users\LogInUserController;
 use App\Http\Controllers\Users\LogOutUserController;
 use App\Http\Controllers\Users\RegisterUserController;
 use App\Http\Controllers\Users\ShowRegisterFormController;
-use FRamework\Support\Facades\Router;
+use Framework\Support\Facades\Router;
 
 return function() {
     Router::errorHandler(
