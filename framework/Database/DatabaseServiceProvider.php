@@ -2,32 +2,24 @@
 
 namespace Framework\Database;
 
-use Framework\Database\Connection\MysqlConnection;
-use Framework\Database\Connection\SqliteConnection;
-use Framework\Support\DriverProvider;
-use Framework\Support\DriverFactory;
+use Framework\Application\Application;
+use Framework\Support\Facades\Config;
+use Framework\Database\DatabaseFactory;
+use Framework\Support\ServiceProviderInterface;
 
-class DatabaseServiceProvider extends DriverProvider
+class DatabaseServiceProvider implements ServiceProviderInterface
 {
-    protected function name(): string
+    public function bind(Application $application) : void // Non deve ritornare un factory
     {
-        return 'database';
-    }
-
-    protected function factory(): DriverFactory
-    {
-        return new Factory();
-    }
-
-    protected function drivers(): array
-    {
-        return [
-            'sqlite' => function($config) {
-                return new SqliteConnection($config);
-            },
-            'mysql' => function($config) {
-                return new MysqlConnection($config);
-            },
-        ];
+        $application->bind('database', function () {
+            // Ottieni la configurazione
+            $config = Config::get('database');
+    
+            // Estrai il valore di default dal campo 'default'
+            $default = $config['default'];
+    
+            // Passa la configurazione corretta alla factory
+            return (new DatabaseFactory())->create($config[$default]);
+        });
     }
 }

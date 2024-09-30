@@ -2,28 +2,23 @@
 
 namespace Framework\Filesystem;
 
-use Framework\Filesystem\Driver\LocalDriver;
-use Framework\Support\DriverProvider;
-use Framework\Support\DriverFactory;
+use Framework\Application\Application;
+use Framework\Support\Facades\Config;
+use Framework\Support\ServiceProviderInterface;
 
-class FilesystemServiceProvider extends DriverProvider
+class FilesystemServiceProvider implements ServiceProviderInterface
 {
-    protected function name(): string
+    public function bind(Application $application) : void // Non deve ritornare un factory
     {
-        return 'filesystem';
-    }
-
-    protected function factory(): DriverFactory
-    {
-        return new Factory();
-    }
-
-    protected function drivers(): array
-    {
-        return [
-            'local' => function($config) {
-                return new LocalDriver($config);
-            },
-        ];
+        $application->bind('filesystem', function () {
+            // Ottieni la configurazione
+            $config = Config::get('filesystem');
+    
+            // Estrai il valore di default dal campo 'default'
+            $default = $config['default'];
+    
+            // Passa la configurazione corretta alla factory
+            return (new FilesystemFactory())->create($config[$default]);
+        });
     }
 }

@@ -6,11 +6,14 @@ use InvalidArgumentException;
 use ReflectionFunction;
 use ReflectionMethod;
 use ReflectionNamedType;
+use Closure;
+use Exception;
 
 class Container
 {
     private array $bindings = [];
     private array $resolved = [];
+    public array $drivers;
 
     public function bind(string $alias, callable $factory): static
     {
@@ -76,5 +79,26 @@ class Container
         }
 
         return new ReflectionFunction($callable);
+    }
+
+    public function addDriver(string $alias, Closure $driver): static
+    {
+        $this->drivers[$alias] = $driver;
+        return $this;
+    }
+    
+    public function connect(array $config): mixed
+    {
+        if (!isset($config['type'])) {
+            throw new Exception('type is not defined');
+        }
+    
+        $type = $config['type'];
+    
+        if (isset($this->drivers[$type])) {
+            return $this->drivers[$type]($config); // Usa i driver registrati nel container
+        }
+    
+        throw new Exception('unrecognised type');
     }
 }

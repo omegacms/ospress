@@ -8,8 +8,9 @@ use Framework\View\Engine\BasicEngine;
 use Framework\View\Engine\AdvancedEngine;
 use Framework\View\Engine\PhpEngine;
 use Framework\View\Engine\LiteralEngine;
+use Framework\Support\ServiceProviderInterface;
 
-class ViewServiceProvider
+class ViewServiceProvider implements ServiceProviderInterface
 {
     public function bind(Application $application): void
     {

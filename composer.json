@@ -22,7 +22,7 @@
         "vlucas/phpdotenv": "^5.2",
         "symfony/console": "^5.1",
         "league/flysystem": "^2.0",
-        "opis/closure": "^3.6",
+        "omegacms/serializable-closure": "^1.0",
         "monolog/monolog": "^2.2",
         "swiftmailer/swiftmailer": "^6.2",
         "wildbit/swiftmailer-postmark": "^3.3"

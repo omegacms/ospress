@@ -2,28 +2,23 @@
 
 namespace Framework\Logging;
 
-use Framework\Logging\Driver\StreamDriver;
-use Framework\Support\DriverProvider;
-use Framework\Support\DriverFactory;
+use Framework\Application\Application;
+use Framework\Support\Facades\Config;
+use Framework\Support\ServiceProviderInterface;
 
-class LoggingServiceProvider extends DriverProvider
+class LoggingServiceProvider implements ServiceProviderInterface
 {
-    protected function name(): string
+    public function bind(Application $application) : void // Non deve ritornare un factory
     {
-        return 'logging';
-    }
-
-    protected function factory(): DriverFactory
-    {
-        return new Factory();
-    }
-
-    protected function drivers(): array
-    {
-        return [
-            'stream' => function($config) {
-                return new StreamDriver($config);
-            },
-        ];
+        $application->bind('logging', function () {
+            // Ottieni la configurazione
+            $config = Config::get('logging');
+    
+            // Estrai il valore di default dal campo 'default'
+            $default = $config['default'];
+    
+            // Passa la configurazione corretta alla factory
+            return (new LoggingFactory())->create($config[$default]);
+        });
     }
 }

@@ -26,7 +26,7 @@ return [
         'Response'   => \Framework\Support\Facades\Response::class,
         'Router'     => \Framework\Support\Facades\Router::class,
         'Session'    => \Framework\Support\Facades\Session::class,
-        'Validation' => \Framework\Support\Facades\Validation::class,
+        'Validator'  => \Framework\Support\Facades\Validation::class,
         'View'       => \Framework\Support\Facades\View::class
     ],
 ];

@@ -2,7 +2,7 @@
 
 namespace Framework\Routing;
 
-use Framework\Routing\Exception;
+use Exception;
 use Throwable;
 
 class Router

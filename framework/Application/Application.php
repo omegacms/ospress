@@ -6,6 +6,7 @@ use Exception;
 use Dotenv\Dotenv;
 use Framework\Container\Container;
 use Framework\Http\Response;
+use Framework\Support\ServiceProviderInterface;
 use Framework\Support\Facades\AliasLoader;
 use Framework\Support\Facades\Router;
 
@@ -47,7 +48,8 @@ class Application extends Container
         foreach ($providers as $provider) {
             $instance = new $provider;
 
-            if (method_exists($instance, 'bind')) {
+            if ( $instance instanceof ServiceProviderInterface ) {
+            //if (method_exists($instance, 'bind')) {
                 $instance->bind($this);
             }
         }

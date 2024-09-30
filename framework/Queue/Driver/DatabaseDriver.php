@@ -4,7 +4,7 @@ namespace Framework\Queue\Driver;
 
 use Closure;
 use Framework\Queue\Job;
-use Opis\Closure\SerializableClosure;
+use Omega\SerializableClosure\SerializableClosure;
 
 class DatabaseDriver implements Driver
 {

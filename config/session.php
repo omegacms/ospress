@@ -4,6 +4,6 @@ return [
     'default' => 'native',
     'native' => [
         'type' => 'native',
-        'prefix' => 'framework_',
+        'prefix' => '',
     ],
 ];

@@ -2,28 +2,23 @@
 
 namespace Framework\Email;
 
-use Framework\Email\Driver\PostmarkDriver;
-use Framework\Support\DriverProvider;
-use Framework\Support\DriverFactory;
+use Framework\Application\Application;
+use Framework\Support\Facades\Config;
+use Framework\Support\ServiceProviderInterface;
 
-class EmailServiceProvider extends DriverProvider
+class EmailServiceProvider implements ServiceProviderInterface
 {
-    protected function name(): string
+    public function bind(Application $application) : void // Non deve ritornare un factory
     {
-        return 'email';
-    }
-
-    protected function factory(): DriverFactory
-    {
-        return new Factory();
-    }
-
-    protected function drivers(): array
-    {
-        return [
-            'postmark' => function($config) {
-                return new PostmarkDriver($config);
-            },
-        ];
+        $application->bind('email', function () {
+            // Ottieni la configurazione
+            $config = Config::get('email');
+    
+            // Estrai il valore di default dal campo 'default'
+            $default = $config['default'];
+    
+            // Passa la configurazione corretta alla factory
+            return (new EmailFactory())->create($config[$default]);
+        });
     }
 }

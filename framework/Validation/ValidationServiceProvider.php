@@ -7,8 +7,9 @@ use Framework\Validation\Manager;
 use Framework\Validation\Rule\RequiredRule;
 use Framework\Validation\Rule\EmailRule;
 use Framework\Validation\Rule\MinRule;
+use Framework\Support\ServiceProviderInterface;
 
-class ValidationServiceProvider
+class ValidationServiceProvider implements ServiceProviderInterface
 {
     public function bind(Application $application): void
     {
