@@ -49,7 +49,6 @@ class Application extends Container
             $instance = new $provider;
 
             if ( $instance instanceof ServiceProviderInterface ) {
-            //if (method_exists($instance, 'bind')) {
                 $instance->bind($this);
             }
         }
